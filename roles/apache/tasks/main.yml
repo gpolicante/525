@@ -1,0 +1,8 @@
+---
+# tasks file for apache
+
+- name: instalacao do servidor web
+  include: install.yaml
+
+- name: configuracao do site
+  include: config.yaml 

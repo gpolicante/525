@@ -1,0 +1,6 @@
+---
+# vars file for confbase
+
+dominio: db.dexter.com.br
+usuario: userdb
+senha: 4linux

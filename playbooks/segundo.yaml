@@ -1,0 +1,30 @@
+--- 
+- name: minha segunda playbook devops 
+  hosts: all 
+  tasks:
+   - name: instalando o epel-release
+     package: 
+      name: epel-release
+     when: ansible_os_family == "RedHat" 
+     register: pacote     
+ 
+   - name: verificando as opcoes disponiveis de variavel
+     debug:
+      var: pacote
+
+   - name: instalando os pacotes basicos 
+     package: 
+      name: "{{item}}" 
+     with_items: 
+       - vim 
+       - htop 
+       - figlet
+       - cowsay 
+     when: pacote.rc == 0
+     ignore_errors: yes 
+
+
+
+
+
+

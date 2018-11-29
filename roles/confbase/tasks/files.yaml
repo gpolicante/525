@@ -1,0 +1,10 @@
+
+- name: enviando um arquivo sem variavel 
+  copy: 
+   src: files/padrao
+   dest: /tmp/padrao
+
+- name: enviando um arquivo template 
+  template:
+   src: templates/config
+   dest: /tmp/config

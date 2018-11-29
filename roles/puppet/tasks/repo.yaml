@@ -1,0 +1,17 @@
+
+- name: instalando repositorio para centos7 
+  yum:
+   name: https://yum.puppet.com/puppet5/puppet5-release-el-7.noarch.rpm
+   state: present 
+  when: 
+   - ansible_os_family == "RedHat" 
+   - ansible_distribution_major_version == "7" 
+
+
+- name: instalando repositorio do ubuntu1604 
+  apt:
+   deb: https://apt.puppetlabs.com/puppet5-release-xenial.deb
+   state: present 
+  when: 
+   - ansible_os_family == "Debian" 
+   - ansible_distribution_major_version == "16" 

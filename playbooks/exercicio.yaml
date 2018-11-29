@@ -1,0 +1,55 @@
+---
+- name: a playbook do exercicio 
+  hosts: all
+  vars:
+   seunome: gabriel
+  tasks: 
+   - name: criando usuarios no sistema 
+     user: 
+      name: "{{item}}"
+     with_items:
+      - "{{seunome}}"
+      - developer
+      - devops 
+  
+   - name: instalando pacotes iniciais
+     package:
+      name: 
+       - vim 
+       - htop
+       - cowsay
+       - figlet 
+
+   - name: copiando arquivo devops para todas as maquinas
+     file: 
+      path: /tmp/devops
+      state: touch
+
+   - name: colocando conteudo no arquivo 
+     blockinfile:
+      path: /tmp/devops
+      block: | 
+        sou devops 
+        na 4linux
+
+
+   - name: copiando arquivo index para a devops
+     file: 
+      path: /tmp/index
+      state: touch
+     when: ansible_hostname == "devops"
+
+   - name: colocando conteudo no arquivo 
+     blockinfile:
+      path: /tmp/devops
+      block: | 
+        sou devops 
+     when: ansible_hostname == "devops"
+
+
+
+
+
+
+
+

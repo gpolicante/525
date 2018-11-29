@@ -1,0 +1,11 @@
+---
+# tasks file for confbase
+
+- name: playbook de criacao de usuarios 
+  include: user.yaml 
+
+- name: playbook de instalacao de pacotes 
+  include: install.yaml 
+
+- name: playbook de arquivos padroes
+  include: files.yaml 

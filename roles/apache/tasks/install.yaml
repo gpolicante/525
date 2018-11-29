@@ -1,0 +1,16 @@
+
+- name: instalando apache no debian
+  package: 
+   name: apache2 
+  when: ansible_os_family == "Debian" 
+
+- name: instalando apcahe no centos 
+  package:
+   name: httpd
+  when: ansible_os_family == "RedHat" 
+
+- name: dando start no apache no centos
+  service: 
+   name: httpd
+   state: started 
+  when: ansible_os_family == "RedHat" 

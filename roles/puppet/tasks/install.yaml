@@ -1,0 +1,19 @@
+
+
+- name: instalando o puppetserver na maquina devops
+  package: 
+   name: puppetserver
+   update_cache: yes 
+  when: ansible_hostname == "devops" 
+
+- name: instalando o puppetagent 
+  package: 
+    name: puppet-agent 
+    state: present 
+    update_cache: yes 
+
+- name: dando start no puppet-agent quando for centos 
+  service:
+   name: puppet 
+   state: started 
+  when: ansible_os_family == "RedHat"
